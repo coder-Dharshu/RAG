@@ -1,0 +1,11 @@
+.env
+.venv/
+venv/
+__pycache__/
+*.pyc
+vector_store/
+documents/*
+!documents/.gitkeep
+.DS_Store
+.vscode/
+.idea/
