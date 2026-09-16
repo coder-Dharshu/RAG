@@ -8,6 +8,9 @@ Run this once whenever your document set changes:
     python ingest.py
 """
 
+import warnings
+warnings.filterwarnings("ignore")
+
 import os
 from langchain_community.document_loaders import (
     PyPDFLoader,

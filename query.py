@@ -13,6 +13,9 @@ Run (searches only one file):
     python query.py "What are my courses?" --source "resume with work.pdf"
 """
 
+import warnings
+warnings.filterwarnings("ignore")
+
 import sys
 import os
 import argparse
@@ -23,7 +26,11 @@ if hasattr(sys.stdout, "reconfigure"):
 if hasattr(sys.stderr, "reconfigure"):
     sys.stderr.reconfigure(encoding="utf-8")
 
-from langchain_community.embeddings import HuggingFaceEmbeddings
+try:
+    from langchain_huggingface import HuggingFaceEmbeddings
+except ImportError:
+    from langchain_community.embeddings import HuggingFaceEmbeddings
+
 from langchain_groq import ChatGroq
 from langchain_community.vectorstores import FAISS
 from langchain_core.prompts import ChatPromptTemplate
@@ -45,7 +52,7 @@ Answer:"""
 
 
 def load_vector_store():
-    embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+    embeddings = HuggingFaceEmbeddings(model_name=getattr(config, "EMBEDDING_MODEL", "sentence-transformers/all-MiniLM-L6-v2"))
     return FAISS.load_local(
         config.VECTOR_STORE_DIR,
         embeddings,
@@ -72,7 +79,7 @@ def retrieve(vector_store, question, k=config.TOP_K, source_filter=None):
 
     for i, (doc, score) in enumerate(results, 1):
         source = doc.metadata.get("source", "unknown")
-        print(f"  [{i}] score={score:.3f} | {source}")
+        print(f"  [{i}] score={score:.3f} | {source}", flush=True)
 
     return [doc for doc, _ in results]
 
@@ -85,7 +92,7 @@ def generate_answer(question, retrieved_docs):
     prompt = ChatPromptTemplate.from_template(PROMPT_TEMPLATE)
 
     api_key = os.getenv("GROQ_API_KEY")
-    model_name = getattr(config, "GROQ_MODEL", "openai/gpt-oss-20b")
+    model_name = getattr(config, "GROQ_MODEL", "llama-3.3-70b-versatile")
     llm = ChatGroq(model=model_name, temperature=0, api_key=api_key)
     chain = prompt | llm
     response = chain.invoke({"context": context, "question": question})
@@ -96,10 +103,10 @@ def generate_answer(question, retrieved_docs):
 def answer_question(question, source_filter=None):
     vector_store = load_vector_store()
     label = f" (filtered to '{source_filter}')" if source_filter else ""
-    print(f"\nRetrieving top {config.TOP_K} chunks{label}...\n")
+    print(f"\nRetrieving top {config.TOP_K} chunks{label}...\n", flush=True)
     docs = retrieve(vector_store, question, source_filter=source_filter)
     answer = generate_answer(question, docs)
-    print(f"\nAnswer:\n{answer}\n")
+    print(f"\nAnswer:\n{answer}\n", flush=True)
     return answer
 
 
