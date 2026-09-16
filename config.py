@@ -1,7 +1,6 @@
 """
-Central config so every design decision (chunk size, model, k) lives in one
-place — makes it easy to explain trade-offs in an interview and to run
-experiments by changing one number.
+Central config for the RAG pipeline parameters (chunk size, model, k) —
+makes it easy to tune parameters and run experiments by changing one setting.
 """
 
 import os

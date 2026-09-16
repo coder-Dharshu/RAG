@@ -1,50 +1,81 @@
-# RAG Starter (Phase 1)
+# Table-Aware RAG Pipeline
 
-A minimal, working retrieval-augmented generation pipeline: drop documents
-in, ask questions, get grounded answers with citations to source chunks.
+A robust, production-ready Retrieval-Augmented Generation (RAG) pipeline designed to index documents (PDFs, text files), parse tables, store embeddings locally, and generate grounded answers with precise source citations.
 
-## Setup
+---
 
-```bash
-pip install -r requirements.txt
-```
+## Key Features
 
-Create a `.env` file in this folder:
+- **Table-Aware PDF & Text Parsing**: Converts tables in PDFs into structured Markdown representations to preserve context for LLMs.
+- **Local & Fast Embeddings**: Uses HuggingFace `sentence-transformers/all-MiniLM-L6-v2` locally or swappable OpenAI embeddings.
+- **Fast Vector Search**: FAISS vector store for fast similarity search and retrieval.
+- **Groq & LLM Support**: Fast inference via Groq API (or OpenAI models) with deterministic output (`temperature=0`).
+- **Source Citation & Chunk Debugging**: Includes CLI tools to test chunking quality and trace answers back to source context.
 
-```
-OPENAI_API_KEY=sk-...
-```
+---
 
-No OpenAI key? Swap `OpenAIEmbeddings`/`ChatOpenAI` in `ingest.py`/`query.py`
-for `HuggingFaceEmbeddings` (`sentence-transformers/all-MiniLM-L6-v2`) and
-`ChatOllama` (any local model via Ollama) — same interface, no API cost.
+## Setup & Installation
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/coder-Dharshu/RAG.git
+   cd RAG
+   ```
+
+2. **Install Dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Configure Environment Variables**:
+   Copy `.env.example` to `.env` and fill in your API key:
+   ```bash
+   cp .env.example .env
+   ```
+   Add your `GROQ_API_KEY` (or `OPENAI_API_KEY`):
+   ```env
+   GROQ_API_KEY=your_groq_api_key_here
+   ```
+
+---
 
 ## Usage
 
-1. Put PDFs or `.txt` files into `documents/`.
-2. Build the index:
-   ```bash
-   python ingest.py
-   ```
-3. Ask questions:
-   ```bash
-   python query.py "What does the document say about X?"
-   ```
+### 1. Ingest Documents
+Place your PDFs or `.txt` files into the `documents/` folder, then run:
+```bash
+python ingest.py
+```
+This parses the documents, chunks the text into overlapping segments, generates embeddings, and saves the vector store in `vector_store/`.
 
-## Design decisions (for interview talking points)
+### 2. Query the RAG Pipeline
+Run queries from the command line:
+```bash
+python query.py "What does the document say about X?"
+```
 
-| Decision | Why |
+### 3. Debug Chunks (Optional)
+To inspect chunk split quality and retrieval candidates:
+```bash
+python debug_chunks.py
+```
+
+---
+
+## Architecture & Design Decisions
+
+| Decision | Implementation Rationale |
 |---|---|
-| `RecursiveCharacterTextSplitter`, 800/120 chunk/overlap | Splits on paragraph → sentence → word boundaries first, so chunks stay coherent; overlap prevents losing meaning at chunk edges |
-| FAISS (local, file-based) | No server to run for a Phase 1 prototype; swappable for Qdrant/Pinecone later without changing the retrieval interface |
-| `text-embedding-3-small` | Strong quality-to-cost ratio; easy to swap for a local model |
-| `similarity_search_with_score` instead of plain `similarity_search` | Lets you see and reason about retrieval confidence, not just accept whatever comes back |
-| Prompt explicitly says "don't make things up" | Reduces (doesn't eliminate) hallucination when retrieved context doesn't actually answer the question |
-| `temperature=0` | Deterministic, grounded answers — you want retrieval quality tested, not creative variation |
+| **Chunking Strategy** | `RecursiveCharacterTextSplitter` (300 chars, 50 overlap). Splits on paragraph and sentence boundaries to keep contexts coherent without losing edge details. |
+| **Vector Indexing** | FAISS (local, file-based index). Fast, zero-overhead similarity search with easy upgrade paths to Qdrant or Pinecone. |
+| **Embeddings** | `sentence-transformers/all-MiniLM-L6-v2`. High-performance local embedding model requiring no extra API cost. |
+| **Retriever Scoring** | `similarity_search_with_score`. Evaluates retrieval confidence scores for strict grounding. |
+| **Grounded Generation** | System prompt instructs model to answer strictly based on retrieved context, reducing hallucinations. |
 
-## Where to go next (see roadmap Phases 2–5)
+---
 
-- Add hybrid search (BM25 + vector) and a reranker
-- Build a small eval set and measure retrieval precision/recall
-- Move FAISS → Qdrant for a "real" deployment story
-- Add citations back to the user showing which chunk backed which claim
+## Future Enhancements
+
+- Hybrid Search (BM25 + Vector Search) & Cross-Encoder Reranking
+- Multi-document metadata filtering
+- Web UI / Chat Interface integration
