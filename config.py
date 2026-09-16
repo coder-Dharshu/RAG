@@ -40,7 +40,7 @@ TOP_K = 8   # how many chunks to retrieve per query
 #   - "openai" (OpenAI, requires OPENAI_API_KEY)
 #   - "local" (returns retrieved context chunks directly)
 LLM_PROVIDER = "groq"
-GROQ_MODEL = "llama-3.3-70b-versatile"   # standard high-performance Groq model
+GROQ_MODEL = "openai/gpt-oss-20b"
 LLM_MODEL = "gpt-4o-mini"
 TEMPERATURE = 0
 

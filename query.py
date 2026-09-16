@@ -92,7 +92,7 @@ def generate_answer(question, retrieved_docs):
     prompt = ChatPromptTemplate.from_template(PROMPT_TEMPLATE)
 
     api_key = os.getenv("GROQ_API_KEY")
-    model_name = getattr(config, "GROQ_MODEL", "llama-3.3-70b-versatile")
+    model_name = getattr(config, "GROQ_MODEL", "openai/gpt-oss-20b")
     llm = ChatGroq(model=model_name, temperature=0, api_key=api_key)
     chain = prompt | llm
     response = chain.invoke({"context": context, "question": question})
