@@ -11,7 +11,15 @@ Run this once whenever your document set changes:
 import warnings
 warnings.filterwarnings("ignore")
 
+import sys
 import os
+import pickle
+
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8")
+
 from langchain_community.document_loaders import (
     PyPDFLoader,
     TextLoader,
@@ -95,6 +103,11 @@ def build_vector_store(chunks):
     vector_store = FAISS.from_documents(chunks, embeddings)
     vector_store.save_local(config.VECTOR_STORE_DIR)
     print(f"Vector store saved to '{config.VECTOR_STORE_DIR}/'.")
+
+    chunks_path = os.path.join(config.VECTOR_STORE_DIR, "chunks.pkl")
+    with open(chunks_path, "wb") as f:
+        pickle.dump(chunks, f)
+    print(f"[OK] Chunk list pickled to '{chunks_path}' (for BM25 hybrid search).")
     return vector_store
 
 

@@ -1,0 +1,611 @@
+[
+  {
+    "question": "What is the title of the paper presented at the 2022 IEEE International Conference on Quantum Computing and Engineering (QCE)?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "interactive system of Bloch sphere"
+    ]
+  },
+  {
+    "question": "What is the email address associated with Hong-Xin Wu at Chung Yuan Christian University?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "lyp@cycu.org.tw"
+    ]
+  },
+  {
+    "question": "What email address is associated with the author rclu@niu.edu.tw in the provided text?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "johnson072933@gmail.com"
+    ]
+  },
+  {
+    "question": "What type of interactive system did the authors develop using OpenCL?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "Bloch sphere system"
+    ]
+  },
+  {
+    "question": "What specific interactive system does the study propose?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "Bloch sphere interactive system"
+    ]
+  },
+  {
+    "question": "What specific visualization system is included in the proposed mobile application for quantum computing simulation?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "Bloch sphere rotation system"
+    ]
+  },
+  {
+    "question": "What acronym is defined as FPGA Client in the proposed system?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "FLIK"
+    ]
+  },
+  {
+    "question": "Which specific FPGA model is used in the adaptable accelerator described in the text?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "Intel Arria-10 FPGA"
+    ]
+  },
+  {
+    "question": "What programming framework is used by the FPGA to simulate quantum circuits?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "OpenCL"
+    ]
+  },
+  {
+    "question": "What system architecture is used to visualize single-qubit quantum states by rotating the Bloch sphere?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "OpenCL heterogeneous system architecture"
+    ]
+  },
+  {
+    "question": "On which device can users select the initial qubit and the operating quantum gate?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "mobile App"
+    ]
+  },
+  {
+    "question": "Who proposed the idea of quantum computing in the early 1980s?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "Richard Feynman"
+    ]
+  },
+  {
+    "question": "What can the OpenCL vector of a Bloch sphere visualize?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "results of the quantum state of a qubit"
+    ]
+  },
+  {
+    "question": "What fundamental unit of information does classical computing use?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "bits (zeros and ones)"
+    ]
+  },
+  {
+    "question": "What units and principles does quantum computing use according to the text?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "qubits and quantum-mechanical"
+    ]
+  },
+  {
+    "question": "What is the name of the sphere mentioned in the text that is associated with quantum computers?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "Bloch sphere"
+    ]
+  },
+  {
+    "question": "Which physicist is the geometric representation of quantum states named after?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "Felix Bloch"
+    ]
+  },
+  {
+    "question": "What notation is used to write a basic unit of quantum state?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "Dirac notation"
+    ]
+  },
+  {
+    "question": "What is the arbitrary quantum state referred to as in the context of the superposition principle?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "|\u03c8\u27e9"
+    ]
+  },
+  {
+    "question": "What is the name of the game created by IBM to teach players how to manipulate qubits and code programs for quantum computers?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "Hello Quantum"
+    ]
+  },
+  {
+    "question": "What type of computers do most quantum computing simulation software libraries use?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "classical computers"
+    ]
+  },
+  {
+    "question": "Which framework was proposed for implementing quantum computer simulations on GPUs and FPGAs?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "Open Computing Language (OpenCL)"
+    ]
+  },
+  {
+    "question": "What type of hardware is proposed that is capable of supporting parallel computation with lower power consumption than a GPU?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "FPGA-based"
+    ]
+  },
+  {
+    "question": "What is OpenCL designed for according to the text?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "parallelized computing"
+    ]
+  },
+  {
+    "question": "What type of system is OpenCL designed to operate on?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "heterogeneous system"
+    ]
+  },
+  {
+    "question": "In the proposed heterogeneous system, what component is used as the control and what is used as the quantum computer?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "CPU as the control and FPGA"
+    ]
+  },
+  {
+    "question": "What condition must the complex numbers \u03b1 and \u03b2 satisfy in the representation of the quantum state |\u03c8\u27e9?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "|\u03b1|2+|\u03b2|2=1"
+    ]
+  },
+  {
+    "question": "What mathematical operation is used to obtain the coefficients of the quantum state?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "matrix multiplication"
+    ]
+  },
+  {
+    "question": "What figure number shows the architecture for applying a quantum gate?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "Fig. 6"
+    ]
+  },
+  {
+    "question": "What is the matrix representation of the quantum state |\u03c8'\u27e9 as defined in equation (7)?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "r e^{i\u03b8/2}"
+    ]
+  },
+  {
+    "question": "Why can the factor of $e^{i\\gamma}$ be ignored in the state $|\\psi\\rangle$?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "no observable effects"
+    ]
+  },
+  {
+    "question": "What are the coordinates on the Bloch sphere represented by the variables \u03b8 and \u03c6?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "coordinates on the Bloch sphere"
+    ]
+  },
+  {
+    "question": "Which specific quantum gates are mentioned as being used to manipulate bits in a quantum computer?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "X-gate, Y-gate, Z-gate, and H-gate"
+    ]
+  },
+  {
+    "question": "What is the result of applying the X-gate to the qubit state |0\u27e9?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "|1\u27e9"
+    ]
+  },
+  {
+    "question": "What is the relationship between the coefficient \u03b1 and the angle \u03b8 on the Bloch sphere?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "cos(\u03b8/2)"
+    ]
+  },
+  {
+    "question": "How is the coefficient \u03b2 expressed in terms of \u03c6 and \u03b8 on the Bloch sphere?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "ei\u03c6sin(\u03b8/2)"
+    ]
+  },
+  {
+    "question": "What is the relationship between the angle of the cartesian plane and the angle \u03b8 of the Bloch sphere when the cartesian plane angle is increased by 90\u00ba?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "half of the angle"
+    ]
+  },
+  {
+    "question": "What is the angle between two orthogonal vectors in the Cartesian Plane when represented on the Bloch sphere?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "180\u00ba"
+    ]
+  },
+  {
+    "question": "How are two orthogonal vectors in the Cartesian Plane oriented relative to each other on the Bloch sphere?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "parallel but in the opposite direction"
+    ]
+  },
+  {
+    "question": "Which specific hardware component is included in the Bloch sphere rotation system?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "Nano 33 BLE"
+    ]
+  },
+  {
+    "question": "What three models are included in the architecture of OpenCL?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "platform model, memory model, and execution model"
+    ]
+  },
+  {
+    "question": "What specific IoT microcontroller is listed alongside the microcontroller, motor drive, and Mecanum wheels?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "Nano 33 IoT microcontroller"
+    ]
+  },
+  {
+    "question": "What does the model represent regarding the host (CPU) and device (FPGA)?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "main process of how the host"
+    ]
+  },
+  {
+    "question": "What is the program that executes on the device also known as?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "kernel"
+    ]
+  },
+  {
+    "question": "Which specific hardware component is used to monitor the sphere's status?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "Nano 33 BLE"
+    ]
+  },
+  {
+    "question": "What are the possible dimensionalities of the ND-Range index space defined by the host program?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "one-dimensional, two-dimensional, or three-"
+    ]
+  },
+  {
+    "question": "What type of motors are used to drive the Mecanum wheel rotation in the system?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "continuous rotation servo motors"
+    ]
+  },
+  {
+    "question": "What frequency square wave is mentioned in the context of the system's operation?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "50 Hz square wave"
+    ]
+  },
+  {
+    "question": "What component is used to control the servo motor rotation speed?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "adjustable pulse width"
+    ]
+  },
+  {
+    "question": "What is used to reduce rotation angle errors in the servo motors control?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "G-sensor"
+    ]
+  },
+  {
+    "question": "What three parameters are used to compute the global ID of a work-item?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "local ID, workgroup ID, and work-group size"
+    ]
+  },
+  {
+    "question": "What is the angle correction in the memory model adjusted to make in real-time?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "angle correction"
+    ]
+  },
+  {
+    "question": "According to the text, how should the speed of the right motor compare to the left motor?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "slower than the left"
+    ]
+  },
+  {
+    "question": "Which memory regions are included in the system shown in Fig. 12?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "global memory, constant memory"
+    ]
+  },
+  {
+    "question": "What computing method is used on an FPGA to simulate quantum computers in the research?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "matrix multiplication"
+    ]
+  },
+  {
+    "question": "What type of space represents the quantum state in the described simulation?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "complex space"
+    ]
+  },
+  {
+    "question": "What specific matrix operations do the kernels perform to generate complex coefficients?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "complex coefficients of |0\u27e9 and |1\u27e9"
+    ]
+  },
+  {
+    "question": "What is the estimated fmax for the kernel described in the text?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "272.5 MHz"
+    ]
+  },
+  {
+    "question": "What type of kernel is specified for the operation?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "ND-Range"
+    ]
+  },
+  {
+    "question": "What is the latency in cycles mentioned in the text?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "178 cycles"
+    ]
+  },
+  {
+    "question": "What are the values of the angles \u03b8 and \u03c6 for the Bloch vector when the X-gate is operated on the state |0\u27e9?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "\u03b8=180\u00b0 and \u03c6=0\u00b0"
+    ]
+  },
+  {
+    "question": "What component is included in the interactive system of Bloch sphere for inputting the quantum gate and qubit?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "cellphone"
+    ]
+  },
+  {
+    "question": "What specific hardware is used for quantum computing simulation in the described system?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "FPGA computing device"
+    ]
+  },
+  {
+    "question": "What system controls the sphere rotation to visualize the quantum state?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "Bloch sphere rotation system"
+    ]
+  },
+  {
+    "question": "Which communication protocol is used to transmit selected data from the CPU computing device to the FPGA computing device?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "via Bluetooth"
+    ]
+  },
+  {
+    "question": "What file is renewed when the host receives the computing result?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "result.txt"
+    ]
+  },
+  {
+    "question": "Which quantum gates are demonstrated operating on the |0\u27e9 and |1\u27e9 states in the quantum computing results shown in Fig. 19?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "X-gate, H-gate"
+    ]
+  },
+  {
+    "question": "What specific communication module is used in the Bloch sphere rotation system?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "Bluetooth 5 Low Energy modules"
+    ]
+  },
+  {
+    "question": "How many microcontrollers are used to implement the Bloch sphere rotation system?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "two microcontrollers"
+    ]
+  },
+  {
+    "question": "Which specific microcontroller model receives data to drive the Bloch sphere rotation system?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "Nano 33 IoT microcontroller"
+    ]
+  },
+  {
+    "question": "What communication protocol is used to send resultant angle values to the microcontroller?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "serial communication protocol"
+    ]
+  },
+  {
+    "question": "What specific factor controls the sphere deflection according to the text?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "rotation speed difference"
+    ]
+  },
+  {
+    "question": "Which microcontroller is used in the research to control the motor via Bluetooth?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "Nano 33 BLE"
+    ]
+  },
+  {
+    "question": "What type of module is used in the Bloch sphere to sense its status?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "9-axis IMU module"
+    ]
+  },
+  {
+    "question": "Which figure shows the details of the sphere rotation process?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "Fig. 22"
+    ]
+  },
+  {
+    "question": "What is the title of the 2021 paper by Ji, X., Wang, B., Hu, F., Wang, C., & Zhang, H. published in Tsinghua Science and Technology?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "New advanced computing architecture for cryptography design and analysis by D-Wave quantum annealer"
+    ]
+  },
+  {
+    "question": "Who are the authors of the 2012 study titled 'Exploration of factors that affect the comparative effectiveness of physical and virtual manipulatives in an undergraduate laboratory'?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "Chini, J. J., Madsen, A."
+    ]
+  },
+  {
+    "question": "Which organization published the 'List of QC simulators' in 2022?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "Quantiki"
+    ]
+  },
+  {
+    "question": "In which journal was the 2020 paper by Heng, Kim, and Han published?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "Transactions on Smart Processing & Computing"
+    ]
+  },
+  {
+    "question": "What is the title of the 2018 paper by Cong, J. et al. presented at the IEEE 26th Annual International Symposium on Field-Programmable Custom Computing Machines?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "Understanding performance differences of FPGAs and GPUs"
+    ]
+  },
+  {
+    "question": "What type of system did the authors propose in the paper to visualize quantum computing simulation?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "interactive system of Bloch sphere"
+    ]
+  },
+  {
+    "question": "On which architecture is the quantum computing simulation achieved?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "OpenCL architecture"
+    ]
+  },
+  {
+    "question": "Where does the quantum computing simulation run according to the text?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "FPGA"
+    ]
+  },
+  {
+    "question": "What can the Bloch sphere rotation system visualize regarding a qubit?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "change of the quantum state"
+    ]
+  },
+  {
+    "question": "How can the system help users learn quantum computing?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "physical manipulatives"
+    ]
+  },
+  {
+    "question": "Which university's Quantum Information Center is acknowledged by the authors?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "Chung Yuan Christian University"
+    ]
+  },
+  {
+    "question": "What is the full title of the 1982 work by R. P. Feynman cited in the references?",
+    "expected_source": "documents\\The_interactive_system_of_Bloch_sphere_for_quantum_computing_education.pdf",
+    "expected_keywords": [
+      "Simulating Physics with Computers"
+    ]
+  }
+]
