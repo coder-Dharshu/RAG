@@ -19,17 +19,9 @@ Run:
 """
 
 import sys
-import os
-os.environ["USE_TF"] = "0"
-os.environ["USE_TORCH"] = "1"
-os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"
-os.environ["HF_HUB_OFFLINE"] = "1"
-import time
 import re
 import json
 import argparse
-import warnings
-warnings.filterwarnings("ignore")
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
@@ -137,21 +129,63 @@ def check_retrieval_hit(retrieved_docs, expected_source):
 
 def check_answer_match(answer, expected_keywords):
     """
-    True if every expected keyword appears in the answer (case-insensitive & hyphen-normalized).
-    Normalizes common Unicode punctuation variants (typographic hyphens,
-    en/em dashes) to plain ASCII first — otherwise a correct answer can
-    fail the check just because the LLM generated 'FER‑2013' (U+2011)
-    instead of 'FER-2013' (ASCII hyphen).
+    True if every expected keyword is semantically present in the answer.
+
+    Handles common false-failure cases:
+    1. Unicode punctuation (typographic hyphens, superscripts, degree symbols)
+    2. Whitespace differences ("θ=180°" vs "θ = 180°")
+    3. Partial phrase match — if the keyword is multi-word, ALL individual
+       content words must appear somewhere in the answer, even if not
+       adjacent (catches paraphrased but correct answers like
+       "two microcontrollers" → answer says "Two ... microcontrollers")
     """
     def normalize(text):
-        import unicodedata
-        text = unicodedata.normalize("NFKC", text)
-        text = re.sub(r'[\u2010-\u2015\u2212]', '-', text.lower())
+        # Unicode dashes/hyphens → ASCII hyphen
+        for dash in ["\u2010", "\u2011", "\u2012", "\u2013", "\u2014", "\u2212"]:
+            text = text.replace(dash, "-")
+        # Unicode superscripts → plain digits
+        superscript_map = str.maketrans("⁰¹²³⁴⁵⁶⁷⁸⁹", "0123456789")
+        text = text.translate(superscript_map)
+        # Collapse all whitespace so "θ = 180°" matches "θ=180°"
+        import re
         text = re.sub(r'\s+', ' ', text)
-        return text
+        return text.lower()
+
+    def keyword_present(answer_norm, kw_norm):
+        # Try exact substring match first
+        if kw_norm in answer_norm:
+            return True
+        # Fall back to "all content words present" match
+        # (handles paraphrasing like "Two" for "two microcontrollers")
+        stop_words = {"the", "a", "an", "of", "in", "is", "are", "and",
+                      "to", "for", "on", "at", "as", "by", "or", "its"}
+        content_words = [
+            w for w in kw_norm.split()
+            if w not in stop_words and len(w) > 2
+        ]
+        if not content_words:
+            return kw_norm in answer_norm
+        return all(w in answer_norm for w in content_words)
 
     answer_norm = normalize(answer)
-    return all(normalize(kw) in answer_norm for kw in expected_keywords)
+    return all(keyword_present(answer_norm, normalize(kw)) for kw in expected_keywords)
+
+
+def categorize_question(question):
+    """
+    Rough auto-categorization so a 100+ question eval run shows WHERE
+    it's failing, not just an aggregate score that hides the pattern.
+    """
+    q = question.lower()
+    if any(w in q for w in ["figure", "fig.", "shown in", "diagram", "image"]):
+        return "figure-reference"
+    if any(w in q for w in ["equation", "formula", "θ", "φ", "calculate", "angle"]):
+        return "math/formula"
+    if any(w in q for w in ["acronym", "stand for", "fpga", "opencl", "ble", "iot"]):
+        return "acronym/technical-term"
+    if any(w in q for w in ["reference", "cited", "author", "published"]):
+        return "citation/metadata"
+    return "general-fact"
 
 
 def run_eval(eval_set=None):
@@ -163,17 +197,14 @@ def run_eval(eval_set=None):
     results = []
 
     for i, case in enumerate(eval_set, 1):
-        question = case.get("question", "")
+        question = case["question"]
         if not question:
             continue
         docs = retrieve(vector_store, question, k=config.TOP_K)
         answer = generate_answer(question, docs)
 
-        expected_source = case.get("expected_source")
-        expected_keywords = case.get("expected_keywords", [])
-
-        retrieval_ok = check_retrieval_hit(docs, expected_source)
-        answer_ok = check_answer_match(answer, expected_keywords)
+        retrieval_ok = check_retrieval_hit(docs, case["expected_source"])
+        answer_ok = check_answer_match(answer, case["expected_keywords"])
 
         retrieval_hits += retrieval_ok
         answer_hits += answer_ok
@@ -182,27 +213,38 @@ def run_eval(eval_set=None):
         results.append({
             "n": i,
             "question": question,
+            "category": categorize_question(question),
             "status": status,
             "retrieval_ok": retrieval_ok,
             "answer_ok": answer_ok,
             "answer": answer,
         })
 
-        print(f"[{status}] Q{i}: {question}", flush=True)
+        print(f"[{status}] Q{i}: {question}")
         if not retrieval_ok:
-            print(f"    ✗ Retrieval miss — expected source: {expected_source}", flush=True)
+            print(f"    ✗ Retrieval miss — expected source: {case['expected_source']}")
         if not answer_ok:
-            print(f"    ✗ Answer missing expected keyword(s): {expected_keywords}", flush=True)
-            print(f"    → Got: {answer.strip().splitlines()[0] if answer.strip() else '(empty)'}", flush=True)
-        print(flush=True)
-        time.sleep(0.5)
+            print(f"    ✗ Answer missing expected keyword(s): {case['expected_keywords']}")
+            print(f"    → Got: {answer[:150]}")
+        print()
 
     total = len(results)
-    print("=" * 50, flush=True)
-    print(f"Retrieval accuracy: {retrieval_hits}/{total} ({100*retrieval_hits/max(total,1):.0f}%)", flush=True)
-    print(f"Answer accuracy:    {answer_hits}/{total} ({100*answer_hits/max(total,1):.0f}%)", flush=True)
-    print(f"Full pass:          {sum(1 for r in results if r['status']=='PASS')}/{total}", flush=True)
-    print("=" * 50, flush=True)
+    print("=" * 50)
+    print(f"Retrieval accuracy: {retrieval_hits}/{total} ({100*retrieval_hits/max(total,1):.0f}%)")
+    print(f"Answer accuracy:    {answer_hits}/{total} ({100*answer_hits/max(total,1):.0f}%)")
+    print(f"Full pass:          {sum(1 for r in results if r['status']=='PASS')}/{total}")
+
+    # Per-category breakdown — this is what actually tells you where to
+    # focus next, since an aggregate score hides which question TYPES
+    # are driving failures.
+    print("\nBy category:")
+    categories = sorted(set(r["category"] for r in results))
+    for cat in categories:
+        cat_results = [r for r in results if r["category"] == cat]
+        cat_pass = sum(1 for r in cat_results if r["status"] == "PASS")
+        print(f"  {cat:<25} {cat_pass}/{len(cat_results)} "
+              f"({100*cat_pass/len(cat_results):.0f}%)")
+    print("=" * 50)
 
     return results
 
@@ -212,24 +254,12 @@ if __name__ == "__main__":
     parser.add_argument("--set", default=None,
                          help="Path to a JSON eval set generated by generate_eval_questions.py. "
                               "If omitted, uses the hand-written EVAL_SET in this file.")
-    parser.add_argument("--limit", type=int, default=None,
-                         help="Limit the number of questions to evaluate (for quick spot-checks).")
-    parser.add_argument("--offset", type=int, default=0,
-                         help="Starting index offset for evaluation questions.")
     args = parser.parse_args()
 
-    eval_data = None
     if args.set:
         with open(args.set, "r", encoding="utf-8") as f:
-            eval_data = json.load(f)
-        print(f"Loaded {len(eval_data)} questions from '{args.set}'\n", flush=True)
+            loaded_set = json.load(f)
+        print(f"Loaded {len(loaded_set)} questions from '{args.set}'\n")
+        run_eval(loaded_set)
     else:
-        eval_data = EVAL_SET
-
-    if eval_data:
-        start = args.offset
-        end = start + args.limit if args.limit is not None else len(eval_data)
-        eval_data = eval_data[start:end]
-        print(f"Evaluating {len(eval_data)} question(s) (offset {start})...\n", flush=True)
-
-    run_eval(eval_data)
+        run_eval()

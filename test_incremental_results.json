@@ -1,0 +1,12 @@
+{
+  "TEST 1": "PASSED: Existing index loaded without reprocessing.",
+  "TEST 2": "PASSED: New document incrementally ingested without re-embedding old docs.",
+  "TEST 3": "PASSED: Query retrieved new document content correctly: **Obstacle Avoidance Accuracy**\n\n- The autonomous aerial surveillance drone achieves **98.4% obstacl...",
+  "TEST 4": "PASSED: Duplicate detected. No duplicate chunks or vectors created.",
+  "TEST 5": "PASSED: Modified document replaced cleanly. No stale chunks remained.",
+  "TEST 6": "PASSED: Second doc indexed; first doc and second doc both immediately searchable.",
+  "TEST 7": "PASSED: Full index state and registry reloaded from disk without issues.",
+  "TEST 8": "PASSED: Rebuild entire index reprocessed 6 documents cleanly.",
+  "TEST 9": "PASSED: Incompatible index model detected with warning requiring rebuild.",
+  "TEST 10": "PASSED: 'What are my projects?' returns all projects completely."
+}
